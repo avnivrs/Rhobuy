@@ -69,18 +69,6 @@ InputDecoration buildInputDecoration(String hintText) {
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon: hintText == 'Email address' || hintText == 'Name'
-        ? null
-        : GestureDetector(
-            onTap: () {
-              Get.find<LoginController>().toggleObscureText();
-            },
-            child: Icon(
-              Get.find<LoginController>().obscureText.value
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-              color: kGreyColor,
-            )),
     border: inputConponent(kInputBgColor),
     enabledBorder: inputConponent(kInputBgColor),
     focusedBorder: inputConponent(kGreyColor),
@@ -95,14 +83,37 @@ InputDecoration buildInputDecorationII(String hintText) {
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon: hintText == 'Email address' || hintText == 'Name'
-        ? null
-        : GestureDetector(
+    suffixIcon:
+        GestureDetector(
             onTap: () {
               Get.find<SignUpController>().toggleObscureText();
             },
             child: Icon(
               Get.find<SignUpController>().passwordObscureText.value
+                  ? Icons.visibility_outlined
+                  : Icons.visibility_off_outlined,
+              color: kGreyColor,
+            )),
+    border: inputConponent(kInputBgColor),
+    enabledBorder: inputConponent(kInputBgColor),
+    focusedBorder: inputConponent(kGreyColor),
+    errorBorder: inputConponent(Colors.red.withOpacity(0.3)),
+  );
+}
+InputDecoration buildInputDecorationIV(String hintText) {
+  return InputDecoration(
+    hintText: hintText,
+    isCollapsed: true,
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+    filled: true,
+    fillColor: kInputBgColor,
+    suffixIcon:
+        GestureDetector(
+            onTap: () {
+              Get.find<LoginController>().toggleObscureText();
+            },
+            child: Icon(
+              Get.find<LoginController>().obscureText.value
                   ? Icons.visibility_outlined
                   : Icons.visibility_off_outlined,
               color: kGreyColor,

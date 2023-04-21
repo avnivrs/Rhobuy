@@ -11,7 +11,7 @@ import '../widget/basic_widget.dart';
 import 'Login.dart';
 
 class SignupScreen extends StatelessWidget {
-  SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,7 @@ class SignupScreen extends StatelessWidget {
                       obscureText: controller.passwordObscureText.value,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
-                      decoration: buildInputDecoration('Password'),
+                      decoration: buildInputDecorationII('Password'),
                     );
                   }),
                   sizedBoxHeight(20),
@@ -99,7 +99,7 @@ class SignupScreen extends StatelessWidget {
                       obscureText: controller.confirmPasswordObscureText.value,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
-                      decoration: buildInputDecorationII('Confirm password'),
+                      decoration: buildInputDecorationIII('Confirm password'),
                     );
                   }),
                   sizedBoxHeight(20),
