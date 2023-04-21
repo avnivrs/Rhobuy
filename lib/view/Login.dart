@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,36 +30,13 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          padding: EdgeInsets.all(8.sp),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey.withOpacity(0.3)),
-                          child: Center(
-                            child: Icon(
-                              CupertinoIcons.left_chevron,
-                              size: 20.sp,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                  backButton(),
                   sizedBoxHeight(70),
-                  Text(
-                    'Welcome Back!',
-                    style:
-                        TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w600),
-                  ),
+                  buildHeader('Welcome Back'),
                   sizedBoxHeight(10),
                   Text(
                     'Please login to Rhobuy using your',
-                    style: TextStyle(fontSize: 16.sp, color: kGreyColor),
+                    style: TextStyle(fontSize: 15.sp, color: kGreyColor),
                   ),
                   sizedBoxHeight(8),
                   Row(
@@ -68,12 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Text(
                         'Avniverse',
                         style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 15.sp,
                         ),
                       ),
                       const Text(
                         ' account!',
-                        style: TextStyle(fontSize: 16, color: kGreyColor),
+                        style: TextStyle(fontSize: 15, color: kGreyColor),
                       ),
                     ],
                   ),
@@ -99,21 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(color: kGreyColor),
                       )),
                   sizedBoxHeight(20),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 70.h,
-                        decoration: BoxDecoration(
-                            color: kGreyColor,
-                            borderRadius: buildBorderRadius(20)),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        )),
-                  ),
+                  buildAuthButton('Login', () {}),
                   sizedBoxHeight(30),
                   InkWell(
                     onTap: () {},
@@ -155,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   sizedBoxHeight(20),
                   Center(
                     child: InkWell(
-                        onTap: () => Get.to(SignupScreen()),
+                        onTap: () => Get.off(const SignupScreen()),
                         child: const Text(
                           'Create an account now!',
                           style: TextStyle(

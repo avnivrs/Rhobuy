@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -83,23 +84,23 @@ InputDecoration buildInputDecorationII(String hintText) {
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon:
-        GestureDetector(
-            onTap: () {
-              Get.find<SignUpController>().toggleObscureText();
-            },
-            child: Icon(
-              Get.find<SignUpController>().passwordObscureText.value
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-              color: kGreyColor,
-            )),
+    suffixIcon: GestureDetector(
+        onTap: () {
+          Get.find<SignUpController>().toggleObscureText();
+        },
+        child: Icon(
+          Get.find<SignUpController>().passwordObscureText.value
+              ? Icons.visibility_outlined
+              : Icons.visibility_off_outlined,
+          color: kGreyColor,
+        )),
     border: inputConponent(kInputBgColor),
     enabledBorder: inputConponent(kInputBgColor),
     focusedBorder: inputConponent(kGreyColor),
     errorBorder: inputConponent(Colors.red.withOpacity(0.3)),
   );
 }
+
 InputDecoration buildInputDecorationIV(String hintText) {
   return InputDecoration(
     hintText: hintText,
@@ -107,17 +108,16 @@ InputDecoration buildInputDecorationIV(String hintText) {
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon:
-        GestureDetector(
-            onTap: () {
-              Get.find<LoginController>().toggleObscureText();
-            },
-            child: Icon(
-              Get.find<LoginController>().obscureText.value
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-              color: kGreyColor,
-            )),
+    suffixIcon: GestureDetector(
+        onTap: () {
+          Get.find<LoginController>().toggleObscureText();
+        },
+        child: Icon(
+          Get.find<LoginController>().obscureText.value
+              ? Icons.visibility_outlined
+              : Icons.visibility_off_outlined,
+          color: kGreyColor,
+        )),
     border: inputConponent(kInputBgColor),
     enabledBorder: inputConponent(kInputBgColor),
     focusedBorder: inputConponent(kGreyColor),
@@ -148,5 +148,56 @@ InputDecoration buildInputDecorationIII(String hintText) {
     enabledBorder: inputConponent(kInputBgColor),
     focusedBorder: inputConponent(kGreyColor),
     errorBorder: inputConponent(Colors.red.withOpacity(0.3)),
+  );
+}
+
+Row backButton() {
+  return Row(
+    children: [
+      InkWell(
+        onTap: () => Get.back(),
+        child: Container(
+          padding: EdgeInsets.all(8.sp),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, color: Colors.grey.withOpacity(0.3)),
+          child: Center(
+            child: Icon(
+              CupertinoIcons.left_chevron,
+              size: 20.sp,
+            ),
+          ),
+        ),
+      )
+    ],
+  );
+}
+
+Text buildHeader(String header) {
+  return Text(
+    header,
+    style: TextStyle(fontSize: 21.sp, fontWeight: FontWeight.w600),
+  );
+}
+
+buildHeaderDes(String des) {
+  return Text(
+    des,
+    style: TextStyle(fontSize: 15.sp, color: kGreyColor),
+  );
+}
+buildAuthButton(String buttonText, VoidCallback press) {
+  return InkWell(
+    onTap: press,
+    child: Container(
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: 70.h,
+        decoration: BoxDecoration(
+            color: kGreyColor, borderRadius: buildBorderRadius(20)),
+        child:  Text(
+          buttonText,
+          style: TextStyle(color: Colors.white,fontSize: 16.sp, fontWeight: FontWeight.w600),
+        )),
   );
 }

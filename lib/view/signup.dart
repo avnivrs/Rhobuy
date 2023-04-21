@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,38 +25,12 @@ class SignupScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => Get.back(),
-                        child: Container(
-                          padding: EdgeInsets.all(8.sp),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey.withOpacity(0.3)),
-                          child: Center(
-                            child: Icon(
-                              CupertinoIcons.left_chevron,
-                              size: 20.sp,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                  backButton(),
                   sizedBoxHeight(50),
-                  Text(
-                    'Create an account',
-                    style:
-                        TextStyle(fontSize: 25.sp, fontWeight: FontWeight.w600),
-                  ),
+                  buildHeader('Create an account'),
                   sizedBoxHeight(10),
-                  Text(
-                    'You are one step away from an inspired \nshopping! '
-                    'Let’s get you signed up into ',
-                    style: TextStyle(fontSize: 16.sp, color: kGreyColor),
-                  ),
+                  buildHeaderDes(
+                      "You are one step away from an inspired \nshopping! Let’s get you signed up into "),
                   sizedBoxHeight(8),
                   Row(
                     children: [
@@ -156,21 +129,7 @@ class SignupScreen extends StatelessWidget {
                     ],
                   ),
                   sizedBoxHeight(20),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 70.h,
-                        decoration: BoxDecoration(
-                            color: kGreyColor,
-                            borderRadius: buildBorderRadius(20)),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        )),
-                  ),
+                  buildAuthButton('Sign up',(){}),
                   sizedBoxHeight(20),
                   InkWell(
                     onTap: () {},
@@ -209,7 +168,7 @@ class SignupScreen extends StatelessWidget {
                   sizedBoxHeight(15),
                   Center(
                     child: InkWell(
-                        onTap: () => Get.to(const LoginScreen()),
+                        onTap: () => Get.off(const LoginScreen()),
                         child: const Text(
                           'Login',
                           style: TextStyle(
@@ -227,4 +186,6 @@ class SignupScreen extends StatelessWidget {
       ),
     );
   }
+
+
 }
