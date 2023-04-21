@@ -157,7 +157,7 @@ Row backButton() {
       InkWell(
         onTap: () => Get.back(),
         child: Container(
-          padding: EdgeInsets.all(8.sp),
+          padding: EdgeInsets.all(5.sp),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               shape: BoxShape.circle, color: Colors.grey.withOpacity(0.3)),
@@ -197,7 +197,7 @@ buildAuthButton(String buttonText, VoidCallback press) {
             color: kGreyColor, borderRadius: buildBorderRadius(20)),
         child:  Text(
           buttonText,
-          style: TextStyle(color: Colors.white,fontSize: 16.sp, fontWeight: FontWeight.w600),
+          style: TextStyle(color: Colors.white,fontSize: 14.sp, fontWeight: FontWeight.w600),
         )),
   );
 }

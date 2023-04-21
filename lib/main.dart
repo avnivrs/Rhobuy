@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/view/walkthrough.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,10 @@ import 'package:get/get.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 
