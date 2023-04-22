@@ -17,6 +17,8 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   bloc:
   url_launcher:
+  typewritertext:
+  animated_text_kit: ^4.2.2
   get:
   flutter_screenutil:
   flutter_bloc:

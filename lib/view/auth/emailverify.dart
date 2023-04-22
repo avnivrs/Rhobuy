@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:project_naverda/view/auth/animated_welcome.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,7 +18,7 @@ class EmailVerificationScreen extends StatefulWidget {
 }
 
 class _EmailVerificationScreenState extends State<EmailVerificationScreen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int levelClock = 70;
   String email = 'okoriec01@gmail.com';
@@ -34,6 +36,12 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen>
       }
     });
     _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -113,39 +121,39 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen>
               sizedBoxHeight(40),
               levelClock == 0
                   ? InkWell(
-                onTap: () {},
-                child: Container(
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 80.h,
-                    decoration: BoxDecoration(
-                        color: kGreyBgColor,
-                        borderRadius: buildBorderRadius(50)),
-                    child: Text(
-                      'Resend',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600),
-                    )),
-              )
+                      onTap: () {},
+                      child: Container(
+                          alignment: Alignment.center,
+                          width: double.infinity,
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                              color: kGreyBgColor,
+                              borderRadius: buildBorderRadius(50)),
+                          child: Text(
+                            'Resend',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600),
+                          )),
+                    )
                   : InkWell(
-                onTap: () {},
-                child: Container(
-                    alignment: Alignment.center,
-                    width: double.infinity,
-                    height: 80.h,
-                    decoration: BoxDecoration(
-                        color: kLightGreyBgColor,
-                        borderRadius: buildBorderRadius(50)),
-                    child: Text(
-                      'Resend',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600),
-                    )),
-              ),
+                      onTap: () => Get.to(const AnimatedWelcomeScreen()),
+                      child: Container(
+                          alignment: Alignment.center,
+                          width: double.infinity,
+                          height: 80.h,
+                          decoration: BoxDecoration(
+                              color: kLightGreyBgColor,
+                              borderRadius: buildBorderRadius(50)),
+                          child: Text(
+                            'Resend',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600),
+                          )),
+                    ),
             ],
           ),
         ),

@@ -17,7 +17,7 @@ class EmailTimeDown extends StatefulWidget {
 }
 
 class _EmailTimeDownState extends State<EmailTimeDown>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int levelClock = 62;
   String email = 'okoriec01@gmail.com';
@@ -41,6 +41,12 @@ class _EmailTimeDownState extends State<EmailTimeDown>
     });
 
     _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -168,6 +174,3 @@ class _EmailTimeDownState extends State<EmailTimeDown>
     );
   }
 }
-
-
-

@@ -36,7 +36,8 @@ class _CountdownProgressBarState extends State<CountdownProgressBar>
     _animation = Tween(begin: 1.0, end: 0.0).animate(_controller);
     _controller.forward().whenComplete(() {
       if (widget.index == 0) {
-        Get.offAll(const LoginScreen(), transition: Transition.rightToLeftWithFade,
+        Get.offAll(const LoginScreen(),
+            transition: Transition.rightToLeftWithFade,
             duration: const Duration(seconds: 1),
             curve: Curves.easeInOut);
       }
@@ -179,7 +180,6 @@ String formatByHours(Duration duration) {
   return '${twoDigits(duration.inHours)}:${formatByMinutes(duration)}';
 }
 
-
 /////////////////////////////
 
 class CountdownTimer extends AnimatedWidget {
@@ -192,8 +192,29 @@ class CountdownTimer extends AnimatedWidget {
     Duration clockTimer = Duration(seconds: animation.value);
 
     String timerText =
-        '${clockTimer.inMinutes.remainder(60).toString()} min : ${clockTimer
-        .inSeconds.remainder(60).toString().padLeft(2, '0')} sec';
+        '${clockTimer.inMinutes.remainder(60).toString()} min : ${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')} sec';
+
+    return Text(
+      timerText,
+      style: TextStyle(
+        fontSize: 16.sp,
+        color: Colors.black,
+      ),
+    );
+  }
+}
+
+class CountdownTimerII extends AnimatedWidget {
+  CountdownTimerII({Key? key, required this.animation})
+      : super(key: key, listenable: animation);
+  Animation<int> animation;
+
+  @override
+  build(BuildContext context) {
+    Duration clockTimer = Duration(seconds: animation.value);
+
+    String timerText =
+        '${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')} sec';
 
     return Text(
       timerText,
