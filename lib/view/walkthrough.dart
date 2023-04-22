@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 
@@ -54,7 +55,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen>
                           fontWeight: FontWeight.w500,
                           color: kGreyColor),
                     ),
-                    sizedBoxHeight(25),
+                    sizedBoxHeight(30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -70,7 +71,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen>
                         Column(
                           children: [
                             walkthroughCircle(
-                                darkGreyColor, Icons.shopping_bag_outlined),
+                                darkGreyColor, LineIcons.shoppingBag),
                             sizedBoxHeight(20),
                             walkthroughPills(const Color.fromRGBO(0, 0, 0, 0.1),'pill_two.png'),
                           ],

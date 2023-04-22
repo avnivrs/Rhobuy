@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_naverda/view/EmailTimer.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 
-import '../styles/color.dart';
+import '../../styles/color.dart';
+import 'EmailTimer.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   backButton(),
-                  sizedBoxHeight(70),
+                  sizedBoxHeight(85),
                   buildHeader('Forgot Password?'),
                   sizedBoxHeight(20),
                   buildHeaderDes(

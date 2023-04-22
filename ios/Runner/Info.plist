@@ -41,6 +41,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+   <key>LSApplicationQueriesSchemes</key>
+   <array>
+     <string>http</string>
+     <string>https</string>
+     <string>mailto</string>
+     <string>tel</string>
+     <string>sms</string>
+     <string>maps</string>
+     <string>googlegmail</string>
+   </array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>

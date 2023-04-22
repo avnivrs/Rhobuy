@@ -141,7 +141,7 @@ class SignupScreen extends StatelessWidget {
                   sizedBoxHeight(20),
                   Center(
                     child: InkWell(
-                        onTap: () => Get.off(const LoginScreen()),
+                        onTap: () => Get.to(const LoginScreen()),
                         child: const Text(
                           'Login',
                           style: TextStyle(

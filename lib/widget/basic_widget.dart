@@ -70,7 +70,7 @@ InputDecoration buildInputDecoration(String hintText) {
     hintText: hintText,
     hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
     isCollapsed: true,
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
     border: inputConponent(kInputBgColor),
@@ -86,7 +86,7 @@ InputDecoration buildInputDecorationII(String hintText) {
     isCollapsed: true,
     hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
 
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
     suffixIcon: GestureDetector(
@@ -112,7 +112,7 @@ InputDecoration buildInputDecorationIV(String hintText) {
     isCollapsed: true,
     hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
 
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
     suffixIcon: GestureDetector(
@@ -138,7 +138,7 @@ InputDecoration buildInputDecorationIII(String hintText) {
     isCollapsed: true,
     hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
 
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
     suffixIcon: hintText == 'Email address' || hintText == 'Name'
