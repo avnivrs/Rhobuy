@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/controller/login_controller.dart';
-import 'package:project_naverda/view/signup.dart';
+import 'package:project_naverda/view/auth/signup.dart';
 
-import '../styles/color.dart';
-import '../widget/basic_widget.dart';
-import 'forgottenpassword/enteremail.dart';
+import '../../styles/color.dart';
+import '../../widget/basic_widget.dart';
+import '../forgottenpassword/enteremail.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

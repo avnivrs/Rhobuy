@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project_naverda/styles/color.dart';
-import 'package:project_naverda/view/walkthrough.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:project_naverda/styles/color.dart';
+import 'package:project_naverda/view/onboarding/walkthrough.dart';
+
+import 'controller/walhthrough_controller.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
+  await Hive.initFlutter();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final _controller = Get.put(WalkthroughController());
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,13 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: kBgColor,
             primarySwatch: Colors.grey,
           ),
-          home:  const WalkthroughScreen(),
+          home: Obx(() {
+            if (_controller.isFirstTime) {
+              return WalkthroughScreen();
+            } else {
+              return Container();
+            }
+          }),
         );
       },
     );

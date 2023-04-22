@@ -4,7 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 
-import '../widget/countdown.dart';
+import '../../widget/countdown.dart';
 
 class WalkthroughScreen extends StatefulWidget {
   const WalkthroughScreen({Key? key}) : super(key: key);

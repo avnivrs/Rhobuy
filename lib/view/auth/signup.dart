@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/controller/signup_controller.dart';
+import 'package:project_naverda/view/auth/emailverify.dart';
 
-import '../styles/color.dart';
-import '../widget/basic_widget.dart';
+import '../../styles/color.dart';
+import '../../widget/basic_widget.dart';
 import 'Login.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -128,7 +129,8 @@ class SignupScreen extends StatelessWidget {
                     ],
                   ),
                   sizedBoxHeight(20),
-                  buildAuthButton('Sign up', () {}),
+                  buildAuthButton(
+                      'Sign up', () => Get.to(const EmailVerificationScreen())),
                   sizedBoxHeight(30),
                   buildGoogle(() {}),
                   sizedBoxHeight(20),

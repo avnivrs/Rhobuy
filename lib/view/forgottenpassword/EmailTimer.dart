@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
+import 'package:project_naverda/widget/countdown.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../styles/color.dart';
-import '../Login.dart';
+import '../auth/Login.dart';
 
 class EmailTimeDown extends StatefulWidget {
   const EmailTimeDown({Key? key}) : super(key: key);
@@ -110,7 +111,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                   ),
                   sizedBoxHeight(70),
                   Center(
-                    child: Countdown(
+                    child: CountdownTimer(
                       animation: StepTween(
                         begin: levelClock, // THIS IS A USER ENTERED NUMBER
                         end: 0,
@@ -168,24 +169,5 @@ class _EmailTimeDownState extends State<EmailTimeDown>
   }
 }
 
-class Countdown extends AnimatedWidget {
-  Countdown({Key? key, required this.animation})
-      : super(key: key, listenable: animation);
-  Animation<int> animation;
 
-  @override
-  build(BuildContext context) {
-    Duration clockTimer = Duration(seconds: animation.value);
 
-    String timerText =
-        '${clockTimer.inMinutes.remainder(60).toString()} min : ${clockTimer.inSeconds.remainder(60).toString().padLeft(2, '0')} sec';
-
-    return Text(
-      timerText,
-      style: TextStyle(
-        fontSize: 16.sp,
-        color: Colors.black,
-      ),
-    );
-  }
-}

@@ -39,7 +39,7 @@ walkthroughPills(Color color, String imageAsset) {
     height: Get.mediaQuery.size.height * 0.4 - 50.h,
     decoration: BoxDecoration(
       borderRadius: buildBorderRadius(100),
-      // color: color,
+      color: color,
       image: DecorationImage(image: AssetImage(imgUrl+imageAsset),fit: BoxFit.cover)
     ),
   );

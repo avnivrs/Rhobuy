@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/styles/color.dart';
-import 'package:project_naverda/view/Login.dart';
+import 'package:project_naverda/view/auth/Login.dart';
 
 class CountdownProgressBar extends StatefulWidget {
   final int durationSeconds;
@@ -181,3 +181,26 @@ String formatByHours(Duration duration) {
 
 
 /////////////////////////////
+
+class CountdownTimer extends AnimatedWidget {
+  CountdownTimer({Key? key, required this.animation})
+      : super(key: key, listenable: animation);
+  Animation<int> animation;
+
+  @override
+  build(BuildContext context) {
+    Duration clockTimer = Duration(seconds: animation.value);
+
+    String timerText =
+        '${clockTimer.inMinutes.remainder(60).toString()} min : ${clockTimer
+        .inSeconds.remainder(60).toString().padLeft(2, '0')} sec';
+
+    return Text(
+      timerText,
+      style: TextStyle(
+        fontSize: 16.sp,
+        color: Colors.black,
+      ),
+    );
+  }
+}
