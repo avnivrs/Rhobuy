@@ -203,7 +203,7 @@ buildAuthButton(String buttonText, VoidCallback press) {
         width: double.infinity,
         height: 80.h,
         decoration: BoxDecoration(
-            color: kGreyColor, borderRadius: buildBorderRadius(50)),
+            color: kGreyBgColor, borderRadius: buildBorderRadius(50)),
         child:  Text(
           buttonText,
           style: TextStyle(color: Colors.white,fontSize: 14.sp, fontWeight: FontWeight.w600),

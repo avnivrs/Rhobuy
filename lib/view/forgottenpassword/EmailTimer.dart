@@ -1,10 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../styles/color.dart';
+import '../Login.dart';
 
 class EmailTimeDown extends StatefulWidget {
   const EmailTimeDown({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class EmailTimeDown extends StatefulWidget {
 class _EmailTimeDownState extends State<EmailTimeDown>
     with TickerProviderStateMixin {
   late AnimationController _controller;
-  int levelClock = 5;
+  int levelClock = 62;
   String email = 'okoriec01@gmail.com';
 
   @override
@@ -81,25 +83,32 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                           ),
                         ),
                         TextSpan(
-                          text: ' Open mail app ',
+                          text: 'Open mail app',
                           style: TextStyle(
                               fontSize: 15.0.sp,
+                              decoration: TextDecoration.underline,
+                              decorationThickness: 2.0.sp,
+                              decorationStyle: TextDecorationStyle.solid,
                               color: kBlackColor,
                               fontWeight: FontWeight.w600),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () async {
-                              const url = "googlegmail://";
-                              if (await canLaunch(url)) {
-                                await launch(url);
-                              } else {
-                                throw 'Could not launch $url';
+                              try {
+                                const url = "googlegmail://";
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                              } catch (e) {
+                                print('failed to get app');
                               }
                             },
                         ),
                       ],
                     ),
                   ),
-                  sizedBoxHeight(60),
+                  sizedBoxHeight(70),
                   Center(
                     child: Countdown(
                       animation: StepTween(
@@ -108,14 +117,47 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                       ).animate(_controller),
                     ),
                   ),
-                  if (levelClock == 0)
-                    Text(
-                      "Time's up!",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: Colors.red,
-                      ),
-                    ),
+                  sizedBoxHeight(40),
+                  levelClock == 0
+                      ? InkWell(
+                          onTap: () {},
+                          child: Container(
+                              alignment: Alignment.center,
+                              width: double.infinity,
+                              height: 80.h,
+                              decoration: BoxDecoration(
+                                  color: kGreyBgColor,
+                                  borderRadius: buildBorderRadius(50)),
+                              child: Text(
+                                'Resend',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600),
+                              )),
+                        )
+                      : InkWell(
+                          onTap: () {},
+                          child: Container(
+                              alignment: Alignment.center,
+                              width: double.infinity,
+                              height: 80.h,
+                              decoration: BoxDecoration(
+                                  color: kLightGreyBgColor,
+                                  borderRadius: buildBorderRadius(50)),
+                              child: Text(
+                                'Resend',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600),
+                              )),
+                        ),
+                  sizedBoxHeight(10),
+                  Center(
+                      child: TextButton(
+                          onPressed: () => Get.offAll(const LoginScreen()),
+                          child: const Text('Return to login')))
                 ],
               ),
             ),
