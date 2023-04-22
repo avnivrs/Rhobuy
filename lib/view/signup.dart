@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:project_naverda/controller/signup_controller.dart';
 
 import '../styles/color.dart';
-import '../styles/constants.dart';
 import '../widget/basic_widget.dart';
 import 'Login.dart';
 
@@ -26,7 +25,7 @@ class SignupScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   backButton(),
-                  sizedBoxHeight(50),
+                  sizedBoxHeight(65),
                   buildHeader('Create an account'),
                   sizedBoxHeight(10),
                   buildHeaderDes(
@@ -51,13 +50,13 @@ class SignupScreen extends StatelessWidget {
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Name'),
                   ),
-                  sizedBoxHeight(20),
+                  sizedBoxHeight(30),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Email address'),
                   ),
-                  sizedBoxHeight(20),
+                  sizedBoxHeight(30),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.passwordObscureText.value,
@@ -66,7 +65,7 @@ class SignupScreen extends StatelessWidget {
                       decoration: buildInputDecorationII('Password'),
                     );
                   }),
-                  sizedBoxHeight(20),
+                  sizedBoxHeight(30),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.confirmPasswordObscureText.value,
@@ -129,43 +128,17 @@ class SignupScreen extends StatelessWidget {
                     ],
                   ),
                   sizedBoxHeight(20),
-                  buildAuthButton('Sign up',(){}),
-                  sizedBoxHeight(20),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 70.h,
-                        decoration: BoxDecoration(
-                            color: kBgColor,
-                            border: Border.all(color: kGreyColor, width: 1.0),
-                            borderRadius: buildBorderRadius(20)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              '${imgUrl}google.png',
-                              width: 20.w,
-                            ),
-                            sizedBoxWidth(10),
-                            const Text(
-                              'Google',
-                              style: TextStyle(
-                                  color: Colors.black26,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        )),
-                  ),
+                  buildAuthButton('Sign up', () {}),
+                  sizedBoxHeight(30),
+                  buildGoogle(() {}),
                   sizedBoxHeight(20),
                   const Center(
                     child: Text(
-                      'Already have an account yet? ',
+                      'Already have an account? ',
                       style: TextStyle(color: kGreyColor),
                     ),
                   ),
-                  sizedBoxHeight(15),
+                  sizedBoxHeight(20),
                   Center(
                     child: InkWell(
                         onTap: () => Get.off(const LoginScreen()),
@@ -175,7 +148,7 @@ class SignupScreen extends StatelessWidget {
                               color: kGreyColor, fontWeight: FontWeight.w600),
                         )),
                   ),
-                  sizedBoxHeight(Get.height * 0.1 - 50),
+                  sizedBoxHeight(Get.height * 0.1 - 20),
                   copyDateWidget(),
                   sizedBoxHeight(20),
                 ],
@@ -186,6 +159,4 @@ class SignupScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

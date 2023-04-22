@@ -33,13 +33,14 @@ walkthroughCircle(Color color, IconData iconData) {
   );
 }
 
-walkthroughPills(Color color) {
+walkthroughPills(Color color, String imageAsset) {
   return Container(
     width: 95.w,
     height: Get.mediaQuery.size.height * 0.4 - 50.h,
     decoration: BoxDecoration(
       borderRadius: buildBorderRadius(100),
-      color: color,
+      // color: color,
+      image: DecorationImage(image: AssetImage(imgUrl+imageAsset),fit: BoxFit.cover)
     ),
   );
 }
@@ -200,9 +201,9 @@ buildAuthButton(String buttonText, VoidCallback press) {
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 75.h,
+        height: 80.h,
         decoration: BoxDecoration(
-            color: kGreyColor, borderRadius: buildBorderRadius(40)),
+            color: kGreyColor, borderRadius: buildBorderRadius(50)),
         child:  Text(
           buttonText,
           style: TextStyle(color: Colors.white,fontSize: 14.sp, fontWeight: FontWeight.w600),
@@ -215,14 +216,14 @@ InkWell buildGoogle(VoidCallback press) {
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 75.h,
+        height: 80.h,
         decoration: BoxDecoration(
             color: kBgColor,
             border: Border.all(
               color: kGreyColor,
               width: 1.0.w,
             ),
-            borderRadius: buildBorderRadius(40)),
+            borderRadius: buildBorderRadius(50)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

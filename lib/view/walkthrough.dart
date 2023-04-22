@@ -23,9 +23,9 @@ class _WalkthroughScreenState extends State<WalkthroughScreen>
         child: Column(
           children: [
             SizedBox(
-              height: 15.h,
+              height: 20.h,
               child: CountdownProgressBar(
-                durationSeconds: 5,
+                durationSeconds: 10,
                 index: _currentPageIndex,
               ),
             ),
@@ -61,7 +61,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen>
                         Column(
                           children: [
                             walkthroughPills(
-                                const Color.fromRGBO(65, 148, 244, 0.2)),
+                                const Color.fromRGBO(65, 148, 244, 0.2),'pill_one.png'),
                             sizedBoxHeight(20),
                             walkthroughCircle(
                                 kBgBlueColor, Icons.access_time_outlined)
@@ -72,13 +72,13 @@ class _WalkthroughScreenState extends State<WalkthroughScreen>
                             walkthroughCircle(
                                 darkGreyColor, Icons.shopping_bag_outlined),
                             sizedBoxHeight(20),
-                            walkthroughPills(const Color.fromRGBO(0, 0, 0, 0.1)),
+                            walkthroughPills(const Color.fromRGBO(0, 0, 0, 0.1),'pill_two.png'),
                           ],
                         ),
                         Column(
                           children: [
                             walkthroughPills(
-                                const Color.fromRGBO(106, 215, 187, 0.2)),
+                                const Color.fromRGBO(106, 215, 187, 0.2),'pill_three.png'),
                             sizedBoxHeight(20),
                             walkthroughCircle(
                                 const Color(0xff6AD7BB), Icons.search)
