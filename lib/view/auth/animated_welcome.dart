@@ -4,9 +4,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 
-class AnimatedWelcomeScreen extends StatelessWidget {
+class AnimatedWelcomeScreen extends StatefulWidget {
   const AnimatedWelcomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<AnimatedWelcomeScreen> createState() => _AnimatedWelcomeScreenState();
+}
+
+class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +31,9 @@ class AnimatedWelcomeScreen extends StatelessWidget {
                     'I am Nick - Avniverse AI. I will be your personal shopping assistant. '
                     'Together we are on a mission to get your perfect piece.'
                     "Share your product need with me:"
-                    " {I lost my mum's favorite high-quality silver bracelet with a rose gold"
+                    " \"I lost my mum's favorite high-quality silver bracelet with a rose gold"
                     " heart charm and cubic zirconia stones, and I need to replace it to make it "
-                    "up to her.Can you help get exactly this?}, and I'll search multiple sources to find the best matches. ",
+                    "up to her.Can you help get exactly this?\", and I'll search multiple sources to find the best matches. ",
                     textAlign: TextAlign.justify,
                     textStyle: TextStyle(
                       letterSpacing: 1.2.sp,
@@ -43,7 +49,8 @@ class AnimatedWelcomeScreen extends StatelessWidget {
                 pause: const Duration(milliseconds: 0),
                 displayFullTextOnTap: false,
                 stopPauseOnTap: false,
-              )
+                onFinished: () {},
+              ),
             ],
           ),
         ),

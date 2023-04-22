@@ -38,10 +38,10 @@ walkthroughPills(Color color, String imageAsset) {
     width: 95.w,
     height: Get.mediaQuery.size.height * 0.4 - 50.h,
     decoration: BoxDecoration(
-      borderRadius: buildBorderRadius(100),
-      color: color,
-      image: DecorationImage(image: AssetImage(imgUrl+imageAsset),fit: BoxFit.cover)
-    ),
+        borderRadius: buildBorderRadius(100),
+        color: color,
+        image: DecorationImage(
+            image: AssetImage(imgUrl + imageAsset), fit: BoxFit.cover)),
   );
 }
 
@@ -53,7 +53,8 @@ copyDateWidget() {
       sizedBoxWidth(5),
       Text(
         '${DateTime.now().year} Rhobuy from Avniverse, Inc.',
-        style: TextStyle(fontSize: 11.sp, fontWeight:FontWeight.w600,color: kGreyColor),
+        style: TextStyle(
+            fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
       ),
     ],
   );
@@ -68,7 +69,8 @@ inputConponent(Color color) {
 InputDecoration buildInputDecoration(String hintText) {
   return InputDecoration(
     hintText: hintText,
-    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
+    hintStyle: TextStyle(
+        fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
     isCollapsed: true,
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
@@ -84,8 +86,8 @@ InputDecoration buildInputDecorationII(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
-    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
-
+    hintStyle: TextStyle(
+        fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -110,8 +112,8 @@ InputDecoration buildInputDecorationIV(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
-    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
-
+    hintStyle: TextStyle(
+        fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -136,8 +138,8 @@ InputDecoration buildInputDecorationIII(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
-    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
-
+    hintStyle: TextStyle(
+        fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -195,28 +197,48 @@ buildHeaderDes(String des) {
     style: TextStyle(fontSize: 15.sp, color: kGreyColor),
   );
 }
+
 buildAuthButton(String buttonText, VoidCallback press) {
   return InkWell(
     onTap: press,
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 80.h,
+        height: 70.h,
         decoration: BoxDecoration(
             color: kGreyBgColor, borderRadius: buildBorderRadius(50)),
-        child:  Text(
-          buttonText,
-          style: TextStyle(color: Colors.white,fontSize: 14.sp, fontWeight: FontWeight.w600),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // SizedBox(
+            //     width: 15,
+            //     height: 15,
+            //     child: CircularProgressIndicator(
+            //       valueColor: const AlwaysStoppedAnimation(),
+            //       strokeWidth: 4.0,
+            //       color: kBlackColor.withOpacity(0.8),
+            //       backgroundColor: Colors.white,
+            //     )),
+            sizedBoxWidth(10),
+            Text(
+              buttonText,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
         )),
   );
 }
+
 InkWell buildGoogle(VoidCallback press) {
   return InkWell(
     onTap: press,
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 80.h,
+        height: 70.h,
         decoration: BoxDecoration(
             color: kBgColor,
             border: Border.all(
