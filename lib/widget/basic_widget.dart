@@ -6,6 +6,7 @@ import 'package:project_naverda/controller/login_controller.dart';
 import 'package:project_naverda/controller/signup_controller.dart';
 
 import '../styles/color.dart';
+import '../styles/constants.dart';
 
 sizedBoxHeight(double height) => SizedBox(
       height: height.h,
@@ -47,11 +48,11 @@ copyDateWidget() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      Icon(Icons.copyright, size: 18.sp, color: kGreyColor),
+      Icon(Icons.copyright, size: 10.sp, color: kGreyColor),
       sizedBoxWidth(5),
       Text(
         '${DateTime.now().year} Rhobuy from Avniverse, Inc.',
-        style: TextStyle(fontSize: 12.sp, color: kGreyColor),
+        style: TextStyle(fontSize: 11.sp, fontWeight:FontWeight.w600,color: kGreyColor),
       ),
     ],
   );
@@ -66,6 +67,7 @@ inputConponent(Color color) {
 InputDecoration buildInputDecoration(String hintText) {
   return InputDecoration(
     hintText: hintText,
+    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
     isCollapsed: true,
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
@@ -81,6 +83,8 @@ InputDecoration buildInputDecorationII(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
+    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
+
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -105,6 +109,8 @@ InputDecoration buildInputDecorationIV(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
+    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
+
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -129,6 +135,8 @@ InputDecoration buildInputDecorationIII(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
+    hintStyle: TextStyle(fontSize: 11.sp,fontWeight: FontWeight.w600,color: kGreyColor),
+
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
@@ -192,12 +200,45 @@ buildAuthButton(String buttonText, VoidCallback press) {
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 70.h,
+        height: 75.h,
         decoration: BoxDecoration(
-            color: kGreyColor, borderRadius: buildBorderRadius(20)),
+            color: kGreyColor, borderRadius: buildBorderRadius(40)),
         child:  Text(
           buttonText,
           style: TextStyle(color: Colors.white,fontSize: 14.sp, fontWeight: FontWeight.w600),
+        )),
+  );
+}
+InkWell buildGoogle(VoidCallback press) {
+  return InkWell(
+    onTap: press,
+    child: Container(
+        alignment: Alignment.center,
+        width: double.infinity,
+        height: 75.h,
+        decoration: BoxDecoration(
+            color: kBgColor,
+            border: Border.all(
+              color: kGreyColor,
+              width: 1.0.w,
+            ),
+            borderRadius: buildBorderRadius(40)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              '${imgUrl}google.png',
+              width: 20.w,
+            ),
+            sizedBoxWidth(10),
+            Text(
+              'Google',
+              style: TextStyle(
+                  color: kGreyColor,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+          ],
         )),
   );
 }

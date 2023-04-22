@@ -30,8 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(),
-                  sizedBoxHeight(70),
+                  sizedBoxHeight(80),
                   buildHeader('Welcome Back'),
                   sizedBoxHeight(10),
                   Text(
@@ -45,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         'Avniverse',
                         style: TextStyle(
                           fontSize: 15.sp,
+                          fontWeight: FontWeight.w600
                         ),
                       ),
                       const Text(
@@ -53,13 +53,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  sizedBoxHeight(50),
+                  sizedBoxHeight(60),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Email address'),
                   ),
-                  sizedBoxHeight(25),
+                  sizedBoxHeight(30),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.obscureText.value,
@@ -77,54 +77,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   sizedBoxHeight(20),
                   buildAuthButton('Login', () {}),
                   sizedBoxHeight(30),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        height: 70.h,
-                        decoration: BoxDecoration(
-                            color: kBgColor,
-                            border: Border.all(
-                              color: kGreyColor,
-                              width: 1.0.w,
-                            ),
-                            borderRadius: buildBorderRadius(20)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              '${imgUrl}google.png',
-                              width: 20.w,
-                            ),
-                            sizedBoxWidth(10),
-                            const Text(
-                              'Google',
-                              style: TextStyle(
-                                  color: Colors.black26,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        )),
-                  ),
-                  sizedBoxHeight(30),
-                  const Center(
+                  buildGoogle((){}),
+                  sizedBoxHeight(40),
+                   Center(
                     child: Text(
                       'Don’t have an account yet? ',
-                      style: TextStyle(color: kGreyColor),
+                      style: TextStyle(color: kGreyColor,fontSize: 14.sp),
                     ),
                   ),
                   sizedBoxHeight(20),
                   Center(
                     child: InkWell(
                         onTap: () => Get.off(const SignupScreen()),
-                        child: const Text(
+                        child:  Text(
                           'Create an account now!',
                           style: TextStyle(
-                              color: kGreyColor, fontWeight: FontWeight.w600),
+                              color: kGreyColor,fontSize: 11.sp,fontWeight: FontWeight.w600),
                         )),
                   ),
-                  sizedBoxHeight(Get.height * 0.1.h),
+                  sizedBoxHeight(Get.height * 0.1.h+30.h),
                   copyDateWidget(),
                   sizedBoxHeight(50),
                 ],
@@ -135,4 +106,5 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+
 }
