@@ -36,7 +36,7 @@ class _CountdownProgressBarState extends State<CountdownProgressBar>
     _animation = Tween(begin: 1.0, end: 0.0).animate(_controller);
     _controller.forward().whenComplete(() {
       if (widget.index == 0) {
-        Get.to(const LoginScreen(), transition: Transition.rightToLeftWithFade,
+        Get.offAll(const LoginScreen(), transition: Transition.rightToLeftWithFade,
             duration: const Duration(seconds: 1),
             curve: Curves.easeInOut);
       }

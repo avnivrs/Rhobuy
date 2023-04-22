@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_naverda/styles/color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
-
-import 'controller/walhthrough_controller.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -15,13 +13,11 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final _controller = Get.put(WalkthroughController());
-
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +32,11 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: kBgColor,
             primarySwatch: Colors.grey,
           ),
-          home: Obx(() {
-            if (_controller.isFirstTime) {
-              return WalkthroughScreen();
-            } else {
-              return Container();
-            }
-          }),
+          home:  const WalkthroughScreen(),
         );
       },
     );
   }
 }
+
+
