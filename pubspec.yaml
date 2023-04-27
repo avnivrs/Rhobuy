@@ -16,8 +16,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.4.0
   bloc:
-  url_launcher:
-  typewritertext:
   animated_text_kit: ^4.2.2
   get:
   flutter_screenutil:
@@ -26,9 +24,9 @@ dependencies:
   hive:
   hive_generator:
   icons_launcher: ^2.1.0
+  external_app_launcher:
   line_icons: ^2.0.1
   slide_countdown: ^0.5.0
-  fluttersax: ^0.0.6
 dev_dependencies:
   flutter_test:
     sdk: flutter

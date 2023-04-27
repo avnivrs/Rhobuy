@@ -1,10 +1,11 @@
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/view/auth/animated_welcome.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 
 import '../../styles/color.dart';
 import '../../widget/countdown.dart';
@@ -84,28 +85,22 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen>
                       ),
                     ),
                     TextSpan(
-                      text: 'Open mail app',
-                      style: TextStyle(
-                          fontSize: 15.0.sp,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 2.0.sp,
-                          decorationStyle: TextDecorationStyle.solid,
-                          color: kBlackColor,
-                          fontWeight: FontWeight.w600),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () async {
-                          try {
-                            const url = "googlegmail://";
-                            if (await canLaunch(url)) {
-                              await launch(url);
-                            } else {
-                              throw 'Could not launch $url';
-                            }
-                          } catch (e) {
-                            print('failed to get app');
-                          }
-                        },
-                    ),
+                        text: 'Open mail app',
+                        style: TextStyle(
+                            fontSize: 15.0.sp,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2.0.sp,
+                            decorationStyle: TextDecorationStyle.solid,
+                            color: kBlackColor,
+                            fontWeight: FontWeight.w600),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () async {
+                            await LaunchApp.openApp(
+                              androidPackageName: 'com.google.android.gm',
+                              appStoreLink: 'id422689480',
+                              openStore: true
+                            );
+                          }),
                   ],
                 ),
               ),

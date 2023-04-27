@@ -36,7 +36,7 @@ walkthroughCircle(Color color, IconData iconData) {
 walkthroughPills(Color color, String imageAsset) {
   return Container(
     width: 95.w,
-    height: Get.mediaQuery.size.height * 0.4 - 50.h,
+    height: Get.mediaQuery.size.height * 0.4 - 60.h,
     decoration: BoxDecoration(
         borderRadius: buildBorderRadius(100),
         color: color,

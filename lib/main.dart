@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_naverda/styles/color.dart';
-import 'package:project_naverda/view/auth/Login.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
 
 void main() async {
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: kBgColor,
             primarySwatch: Colors.grey,
           ),
-          home: const LoginScreen(),
+          home: const WalkthroughScreen(),
         );
       },
     );
