@@ -100,7 +100,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                               color: kBlackColor,
                               fontWeight: FontWeight.w600),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () async {
+                            ..onTap = () async  {
                               await LaunchApp.openApp(
                                   androidPackageName: 'com.google.android.gm',
                                   appStoreLink: 'id422689480',
