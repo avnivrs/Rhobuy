@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controller/signup_controller.dart';
 import '../../styles/color.dart';
 import '../../widget/basic_widget.dart';
 
@@ -8,6 +10,8 @@ class EnterNewPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SignUpController controller = Get.put(SignUpController());
+
     return Scaffold(
       body: ListView(
         children: [
@@ -34,18 +38,20 @@ class EnterNewPasswordScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      sizedBoxHeight(50),
+                      sizedBoxHeight(30),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(color: kGreyColor),
                         decoration: buildInputDecorationII('Password'),
                       ),
+                      sizedBoxHeight(20),
+
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(color: kGreyColor),
                         decoration: buildInputDecorationII('Confirm Password'),
                       ),
-                      sizedBoxHeight(30),
+                      sizedBoxHeight(40),
                       buildAuthButton(
                         'Reset',
                         () => null,
