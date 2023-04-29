@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -85,33 +84,7 @@ InputDecoration buildInputDecoration(String hintText) {
   );
 }
 
-InputDecoration buildInputDecorationII(String hintText) {
-  return InputDecoration(
-    hintText: hintText,
-    isCollapsed: true,
-    hintStyle: TextStyle(
-        fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
-    filled: true,
-    fillColor: kInputBgColor,
-    suffixIcon: GestureDetector(
-        onTap: () {
-          Get.find<SignUpController>().toggleObscureText();
-        },
-        child: Icon(
-          Get.find<SignUpController>().passwordObscureText.value
-              ? Iconsax.eye
-              : Iconsax.eye3,
-          color: kGreyColor,
-        )),
-    border: inputConponent(kInputBgColor),
-    enabledBorder: inputConponent(kInputBgColor),
-    focusedBorder: inputConponent(kGreyColor),
-    errorBorder: inputConponent(Colors.red.withOpacity(0.3)),
-  );
-}
-
-InputDecoration buildInputDecorationIV(String hintText) {
+InputDecoration buildInputDecorationLogin(String hintText) {
   return InputDecoration(
     hintText: hintText,
     isCollapsed: true,
@@ -138,27 +111,32 @@ InputDecoration buildInputDecorationIV(String hintText) {
   );
 }
 
-InputDecoration buildInputDecorationIII(String hintText) {
+InputDecoration buildInputDecorationII(String hintText) {
   return InputDecoration(
     hintText: hintText,
-    isCollapsed: true,
     hintStyle: TextStyle(
         fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
+    isCollapsed: true,
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffix: hintText == 'Email address' || hintText == 'Name'
-        ? null
-        : GestureDetector(
-            onTap: () {
-              Get.find<SignUpController>().toggleConfirmObscureText();
-            },
-            child: Icon(
-              Get.find<SignUpController>().confirmPasswordObscureText.value
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-              color: kGreyColor,
-            )),
+    suffix: GestureDetector(
+        onTap: () {
+          hintText != 'Confirm password'
+              ? Get.find<SignUpController>().toggleObscureText()
+              : Get.find<SignUpController>().toggleConfirmObscureText();
+        },
+        child: Icon(
+          hintText != 'Confirm password'
+              ? Get.find<SignUpController>().passwordObscureText.value
+                  ? Iconsax.eye
+                  : Iconsax.eye_slash
+              : Get.find<SignUpController>().confirmPasswordObscureText.value
+                  ? Iconsax.eye
+                  : Iconsax.eye_slash,
+          color: kGreyColor,
+          size: 18.sp,
+        )),
     border: inputConponent(kInputBgColor),
     enabledBorder: inputConponent(kInputBgColor),
     focusedBorder: inputConponent(kGreyColor),
@@ -174,11 +152,13 @@ Row backButton() {
         child: Container(
           padding: EdgeInsets.all(10.sp),
           alignment: Alignment.center,
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle, color: kGreyColorIII),
+          decoration:
+              const BoxDecoration(shape: BoxShape.circle, color: kGreyColorIII),
           child: Center(
-            child: Image.asset('${imgUrl}arrow_left.png',width: 14.w,)
-          ),
+              child: Image.asset(
+            '${imgUrl}arrow_left.png',
+            width: 14.w,
+          )),
         ),
       )
     ],
@@ -196,7 +176,11 @@ Text buildHeader(String header) {
 buildHeaderDes(String des) {
   return Text(
     des,
-    style: TextStyle(fontSize: 15.sp, color: kGreyColor,fontFamily: fontFamily,height: 1.6),
+    style: TextStyle(
+        fontSize: 15.sp,
+        color: kGreyColor,
+        fontFamily: fontFamily,
+        height: 1.6),
   );
 }
 

@@ -6,6 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
 
+import 'view/forgottenpassword/EmailTimer.dart';
+
 void main() async {
   await ScreenUtil.ensureScreenSize();
   await Hive.initFlutter();
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            fontFamily: 'Montserrat-Regular',
+            fontFamily: 'Montserrat-SemiBold',
             scaffoldBackgroundColor: kBgColor,
             primarySwatch: Colors.grey,
           ),

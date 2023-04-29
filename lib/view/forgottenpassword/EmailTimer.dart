@@ -3,9 +3,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:project_naverda/view/forgottenpassword/enter_new_password.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 import 'package:project_naverda/widget/countdown.dart';
-
 
 import '../../styles/color.dart';
 import '../auth/Login.dart';
@@ -28,11 +28,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
     super.initState();
 
     _controller = AnimationController(
-        vsync: this,
-        duration: Duration(
-            seconds:
-                levelClock) // gameData.levelClock is a user entered number elsewhere in the applciation
-        );
+        vsync: this, duration: Duration(seconds: levelClock));
     _controller.addListener(() {
       if (_controller.isCompleted) {
         setState(() {
@@ -62,7 +58,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   backButton(),
-                  sizedBoxHeight(80),
+                  sizedBoxHeight(76),
                   buildHeader('Email sent!'),
                   sizedBoxHeight(20),
                   RichText(
@@ -70,7 +66,8 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                     text: TextSpan(
                       text: 'We sent an email with a reset link to ',
                       style: TextStyle(
-                        fontSize: 15.0.sp,
+                        height: 1.6,
+                        fontSize: 14.0.sp,
                         color: kGreyColor,
                       ),
                       children: [
@@ -80,38 +77,40 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                               color: kBlackColor,
                               overflow: TextOverflow.clip,
                               fontSize: 14.0.sp,
-                              fontWeight: FontWeight.w600),
+                              height: 1.6,
+                              fontWeight: FontWeight.w500),
                         ),
                         TextSpan(
                           text:
                               ' If you didn’t receive the email, check your spam folder or tap the resend button.',
                           style: TextStyle(
-                            fontSize: 15.0.sp,
+                            fontSize: 14.0.sp,
                             color: kGreyColor,
+                            height: 1.6,
                           ),
                         ),
                         TextSpan(
                           text: 'Open mail app',
                           style: TextStyle(
-                              fontSize: 15.0.sp,
+                              fontSize: 14.0.sp,
+                              height: 1.6,
                               decoration: TextDecoration.underline,
-                              decorationThickness: 2.0.sp,
+                              decorationThickness: 1.5.sp,
                               decorationStyle: TextDecorationStyle.solid,
                               color: kBlackColor,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = () async  {
+                            ..onTap = () async {
                               await LaunchApp.openApp(
                                   androidPackageName: 'com.google.android.gm',
                                   appStoreLink: 'id422689480',
-                                  openStore: true
-                              );
+                                  openStore: true);
                             },
                         ),
                       ],
                     ),
                   ),
-                  sizedBoxHeight(70),
+                  sizedBoxHeight(50),
                   Center(
                     child: CountdownTimer(
                       animation: StepTween(
@@ -120,47 +119,33 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                       ).animate(_controller),
                     ),
                   ),
-                  sizedBoxHeight(40),
-                  levelClock == 0
-                      ? InkWell(
-                          onTap: () {},
-                          child: Container(
-                              alignment: Alignment.center,
-                              width: double.infinity,
-                              height: 80.h,
-                              decoration: BoxDecoration(
-                                  color: kGreyBgColor,
-                                  borderRadius: buildBorderRadius(50)),
-                              child: Text(
-                                'Resend',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600),
-                              )),
-                        )
-                      : InkWell(
-                          onTap: () {},
-                          child: Container(
-                              alignment: Alignment.center,
-                              width: double.infinity,
-                              height: 80.h,
-                              decoration: BoxDecoration(
-                                  color: kLightGreyBgColor,
-                                  borderRadius: buildBorderRadius(50)),
-                              child: Text(
-                                'Resend',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600),
-                              )),
-                        ),
-                  sizedBoxHeight(10),
+                  sizedBoxHeight(20),
+                  GestureDetector(
+                    onTap: () => levelClock == 0
+                        ? Get.to(const EnterNewPasswordScreen())
+                        : null,
+                    child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(vertical: 20.r),
+                        decoration: BoxDecoration(
+                            color: levelClock == 0
+                                ? kGreyBgColor
+                                : kLightGreyBgColor,
+                            borderRadius: buildBorderRadius(50)),
+                        child: Text(
+                          'Resend',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600),
+                        )),
+                  ),
+                  sizedBoxHeight(20),
                   Center(
                       child: TextButton(
                           onPressed: () => Get.offAll(const LoginScreen()),
-                          child: const Text('Return to login')))
+                          child:  Text('Return to login',style: TextStyle(fontSize: 12.sp),)))
                 ],
               ),
             ),

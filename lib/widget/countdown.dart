@@ -196,7 +196,7 @@ class CountdownTimer extends AnimatedWidget {
     return Text(
       timerText,
       style: TextStyle(
-        fontSize: 16.sp,
+        fontSize: 14.sp,
         color: Colors.black,
       ),
     );

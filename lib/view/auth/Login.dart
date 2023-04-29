@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: controller.obscureText.value,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
-                      decoration: buildInputDecorationIV('Password'),
+                      decoration: buildInputDecorationLogin('Password'),
                     );
                   }),
                   sizedBoxHeight(10),

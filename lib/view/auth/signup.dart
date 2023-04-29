@@ -72,7 +72,7 @@ class SignupScreen extends StatelessWidget {
                       obscureText: controller.confirmPasswordObscureText.value,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
-                      decoration: buildInputDecorationIII('Confirm password'),
+                      decoration: buildInputDecorationII('Confirm password'),
                     );
                   }),
                   sizedBoxHeight(20),
