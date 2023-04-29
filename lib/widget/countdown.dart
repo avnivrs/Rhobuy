@@ -36,10 +36,9 @@ class _CountdownProgressBarState extends State<CountdownProgressBar>
     _animation = Tween(begin: 1.0, end: 0.0).animate(_controller);
     _controller.forward().whenComplete(() {
       if (widget.index == 0) {
-        Get.offAll(const LoginScreen(),
-            transition: Transition.rightToLeftWithFade,
-            duration: const Duration(seconds: 1),
-            curve: Curves.easeInOut);
+        Get.offAll(
+          const LoginScreen(),
+        );
       }
     });
   }
@@ -59,7 +58,7 @@ class _CountdownProgressBarState extends State<CountdownProgressBar>
           value: _animation.value,
           backgroundColor: kBgColor,
           minHeight: 12.spMax,
-          valueColor: const AlwaysStoppedAnimation<Color>(Colors.black54),
+          valueColor: const AlwaysStoppedAnimation<Color>(kGreyColorII),
         );
       },
     );

@@ -14,7 +14,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  font_awesome_flutter: ^10.4.0
   bloc:
   animated_text_kit: ^4.2.2
   get:
@@ -25,8 +24,8 @@ dependencies:
   hive_generator:
   icons_launcher: ^2.1.0
   external_app_launcher:
-  line_icons: ^2.0.1
   slide_countdown: ^0.5.0
+  iconsax:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,5 +46,10 @@ flutter:
          - asset: assets/font/Montserrat-Regular.ttf
          - asset: assets/font/Montserrat-Bold.ttf
            weight: 700
+
+
+     -  family:  Montserrat-SemiBold
+        fonts:
+          - asset: assets/font/Montserrat-SemiBold.ttf
 
 

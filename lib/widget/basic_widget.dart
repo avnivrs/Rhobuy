@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:project_naverda/controller/login_controller.dart';
 import 'package:project_naverda/controller/signup_controller.dart';
 
@@ -27,7 +28,7 @@ walkthroughCircle(Color color, IconData iconData) {
     decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     child: Icon(
       iconData,
-      size: 30.sp,
+      size: 24.sp,
       color: kBgColor,
     ),
   );
@@ -46,17 +47,19 @@ walkthroughPills(Color color, String imageAsset) {
 }
 
 copyDateWidget() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Icon(Icons.copyright, size: 10.sp, color: kGreyColor),
-      sizedBoxWidth(5),
-      Text(
-        '${DateTime.now().year} Rhobuy from Avniverse, Inc.',
-        style: TextStyle(
-            fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
-      ),
-    ],
+  return Padding(
+    padding: EdgeInsets.only(bottom: 20.sp),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        sizedBoxWidth(5),
+        Text(
+          '  © ${DateTime.now().year}. Rhobuy from Avniverse, Inc..',
+          style: TextStyle(
+              fontSize: 11.sp, fontWeight: FontWeight.w500, color: kGreyColor),
+        ),
+      ],
+    ),
   );
 }
 
@@ -72,7 +75,7 @@ InputDecoration buildInputDecoration(String hintText) {
     hintStyle: TextStyle(
         fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
     isCollapsed: true,
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
     border: inputConponent(kInputBgColor),
@@ -97,8 +100,8 @@ InputDecoration buildInputDecorationII(String hintText) {
         },
         child: Icon(
           Get.find<SignUpController>().passwordObscureText.value
-              ? Icons.visibility_outlined
-              : Icons.visibility_off_outlined,
+              ? Iconsax.eye
+              : Iconsax.eye3,
           color: kGreyColor,
         )),
     border: inputConponent(kInputBgColor),
@@ -114,17 +117,18 @@ InputDecoration buildInputDecorationIV(String hintText) {
     isCollapsed: true,
     hintStyle: TextStyle(
         fontSize: 11.sp, fontWeight: FontWeight.w600, color: kGreyColor),
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 20.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon: GestureDetector(
+    suffix: GestureDetector(
         onTap: () {
           Get.find<LoginController>().toggleObscureText();
         },
         child: Icon(
           Get.find<LoginController>().obscureText.value
-              ? Icons.visibility_outlined
-              : Icons.visibility_off_outlined,
+              ? Iconsax.eye
+              : Iconsax.eye_slash,
+          size: 18.sp,
           color: kGreyColor,
         )),
     border: inputConponent(kInputBgColor),
@@ -143,7 +147,7 @@ InputDecoration buildInputDecorationIII(String hintText) {
     contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 23.h),
     filled: true,
     fillColor: kInputBgColor,
-    suffixIcon: hintText == 'Email address' || hintText == 'Name'
+    suffix: hintText == 'Email address' || hintText == 'Name'
         ? null
         : GestureDetector(
             onTap: () {
@@ -168,15 +172,12 @@ Row backButton() {
       InkWell(
         onTap: () => Get.back(),
         child: Container(
-          padding: EdgeInsets.all(5.sp),
+          padding: EdgeInsets.all(10.sp),
           alignment: Alignment.center,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle, color: Colors.grey.withOpacity(0.3)),
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle, color: kGreyColorIII),
           child: Center(
-            child: Icon(
-              CupertinoIcons.left_chevron,
-              size: 20.sp,
-            ),
+            child: Image.asset('${imgUrl}arrow_left.png',width: 14.w,)
           ),
         ),
       )
@@ -187,14 +188,15 @@ Row backButton() {
 Text buildHeader(String header) {
   return Text(
     header,
-    style: TextStyle(fontSize: 21.sp, fontWeight: FontWeight.w600),
+    style: TextStyle(
+        fontSize: 21.sp, fontWeight: FontWeight.w600, fontFamily: fontFamily),
   );
 }
 
 buildHeaderDes(String des) {
   return Text(
     des,
-    style: TextStyle(fontSize: 15.sp, color: kGreyColor),
+    style: TextStyle(fontSize: 15.sp, color: kGreyColor,fontFamily: fontFamily,height: 1.6),
   );
 }
 
@@ -204,7 +206,7 @@ buildAuthButton(String buttonText, VoidCallback press) {
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 70.h,
+        padding: EdgeInsets.symmetric(vertical: 20.r),
         decoration: BoxDecoration(
             color: kGreyBgColor, borderRadius: buildBorderRadius(50)),
         child: Row(
@@ -225,7 +227,8 @@ buildAuthButton(String buttonText, VoidCallback press) {
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 14.sp,
-                  fontWeight: FontWeight.w600),
+                  fontFamily: fontFamily,
+                  fontWeight: FontWeight.w500),
             ),
           ],
         )),
@@ -238,11 +241,11 @@ InkWell buildGoogle(VoidCallback press) {
     child: Container(
         alignment: Alignment.center,
         width: double.infinity,
-        height: 70.h,
+        padding: EdgeInsets.symmetric(vertical: 20.r),
         decoration: BoxDecoration(
             color: kBgColor,
             border: Border.all(
-              color: kGreyColor,
+              color: kGoogleButtonColor,
               width: 1.0.w,
             ),
             borderRadius: buildBorderRadius(50)),
@@ -251,15 +254,13 @@ InkWell buildGoogle(VoidCallback press) {
           children: [
             Image.asset(
               '${imgUrl}google.png',
-              width: 20.w,
+              width: 17.w,
             ),
             sizedBoxWidth(10),
             Text(
               'Google',
               style: TextStyle(
-                  color: kGreyColor,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600),
+                  color: kGreyColor, fontSize: 14.sp, fontFamily: fontFamily),
             ),
           ],
         )),

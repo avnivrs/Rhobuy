@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/controller/login_controller.dart';
+import 'package:project_naverda/styles/constants.dart';
 import 'package:project_naverda/view/auth/signup.dart';
 
 import '../../styles/color.dart';
@@ -29,36 +30,42 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  sizedBoxHeight(80),
-                  buildHeader('Welcome Back'),
-                  sizedBoxHeight(10),
-                  Text(
-                    'Please login to Rhobuy using your',
-                    style: TextStyle(fontSize: 15.sp, color: kGreyColor),
-                  ),
-                  sizedBoxHeight(8),
-                  Row(
-                    children: [
-                      Text(
-                        'Avniverse',
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w600
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        sizedBoxHeight(80),
+                        buildHeader('Welcome Back!'),
+                        sizedBoxHeight(12),
+                        Text(
+                          'Please login to Rhobuy using your',
+                          style: TextStyle(fontSize: 15.sp, color: kGreyColor,fontFamily: fontFamily),
                         ),
-                      ),
-                      const Text(
-                        ' account!',
-                        style: TextStyle(fontSize: 15, color: kGreyColor),
-                      ),
-                    ],
+                        sizedBoxHeight(8),
+                        Row(
+                          children: [
+                            Text(
+                              'Avniverse',
+                              style: TextStyle(
+                                  fontSize: 15.sp, fontWeight: FontWeight.w500,fontFamily: fontFamily),
+                            ),
+                             Text(
+                              ' account!',
+                              style: TextStyle(fontSize: 15, color: kGreyColor,fontFamily: fontFamily),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  sizedBoxHeight(60),
+                  sizedBoxHeight(50),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Email address'),
                   ),
-                  sizedBoxHeight(30),
+                  sizedBoxHeight(20),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.obscureText.value,
@@ -67,35 +74,53 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: buildInputDecorationIV('Password'),
                     );
                   }),
-                  TextButton(
-                      onPressed: () => Get.to(const ForgotPasswordScreen()),
-                      child: const Text(
-                        'Forgot your password?',
-                        style: TextStyle(color: kGreyColor),
+                  sizedBoxHeight(10),
+                  InkWell(
+                      onTap: () => Get.to(const ForgotPasswordScreen()),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20).r,
+                        child: Text(
+                          'Forgot your password?',
+                          style: TextStyle(
+                              color: kGreyColor,
+                              fontSize: 11.spMax,
+                              fontFamily: fontFamily),
+                        ),
                       )),
-                  sizedBoxHeight(20),
-                  buildAuthButton('Login', () {}),
-                  sizedBoxHeight(30),
-                  buildGoogle((){}),
                   sizedBoxHeight(40),
-                   Center(
-                    child: Text(
-                      'Don’t have an account yet? ',
-                      style: TextStyle(color: kGreyColor,fontSize: 14.sp),
+                  buildAuthButton('Login', () {}),
+                  sizedBoxHeight(20),
+                  buildGoogle(() {}),
+                  sizedBoxHeight(20),
+                  GestureDetector(
+                    onTap: () => Get.to(const SignupScreen()),
+                    child: Column(
+                      children: [
+                        Center(
+                          child: Text(
+                            'Don’t have an account yet? ',
+                            style: TextStyle(
+                                color: kGreyColor,
+                                fontSize: 12.sp,
+                                wordSpacing: 1.3),
+                          ),
+                        ),
+                        sizedBoxHeight(10),
+                        Center(
+                          child: Text(
+                            'Create an account now!',
+                            style: TextStyle(
+                                color: kGreyColor,
+                                fontSize: 12.sp,
+                                fontFamily: fontFamily,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  sizedBoxHeight(20),
-                  Center(
-                    child: InkWell(
-                        onTap: () => Get.to(const SignupScreen()),
-                        child:  Text(
-                          'Create an account now!',
-                          style: TextStyle(
-                              color: kGreyColor,fontSize: 11.sp,fontWeight: FontWeight.w600),
-                        )),
-                  ),
-                  sizedBoxHeight(Get.height * 0.1.h+30.h),
-                  copyDateWidget(),
+                  sizedBoxHeight(86),
+                  // sizedBoxHeight(Get.height * 0.1.h -20),
                   sizedBoxHeight(50),
                 ],
               ),
@@ -103,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: copyDateWidget(),
     );
   }
-
 }

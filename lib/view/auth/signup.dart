@@ -76,58 +76,47 @@ class SignupScreen extends StatelessWidget {
                     );
                   }),
                   sizedBoxHeight(20),
-                  Row(
-                    children: [
-                      Obx(() {
-                        return Checkbox(
-                            checkColor: kBgColor,
-                            fillColor: MaterialStateProperty.all(kGreyColor),
-                            value: controller.checkedBool.value,
-                            onChanged: (value) {
-                              controller.checkedBool.value = value!;
-                            });
-                      }),
-                      SizedBox(
-                          width: 280.w,
-                          child: RichText(
-                            text: TextSpan(
-                              text:
-                                  'By creating an account, I agree to our  and ',
+                  Container(
+                      width: 280.w,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: RichText(
+                        text: TextSpan(
+                          text:
+                              'By creating an account, I agree to our  and ',
+                          style: TextStyle(
+                            fontSize: 11.0.sp,
+                            color: kGreyColor,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: 'Terms of use',
+                              style: TextStyle(
+                                  fontSize: 11.0.sp,
+                                  color: kGreyColor,
+
+                                  fontWeight: FontWeight.w600),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {},
+                            ),
+                            TextSpan(
+                              text: ' and ',
                               style: TextStyle(
                                 fontSize: 11.0.sp,
                                 color: kGreyColor,
                               ),
-                              children: [
-                                TextSpan(
-                                  text: 'Terms of use',
-                                  style: TextStyle(
-                                      fontSize: 11.0.sp,
-                                      color: kGreyColor,
-                                      fontWeight: FontWeight.w600),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
-                                ),
-                                TextSpan(
-                                  text: ' and ',
-                                  style: TextStyle(
-                                    fontSize: 11.0.sp,
-                                    color: kGreyColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: ' Privacy Policy ',
-                                  style: TextStyle(
-                                      fontSize: 11.0.sp,
-                                      color: kGreyColor,
-                                      fontWeight: FontWeight.w600),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {},
-                                ),
-                              ],
                             ),
-                          )),
-                    ],
-                  ),
+                            TextSpan(
+                              text: ' Privacy Policy ',
+                              style: TextStyle(
+                                  fontSize: 11.0.sp,
+                                  color: kGreyColor,
+                                  fontWeight: FontWeight.w600),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {},
+                            ),
+                          ],
+                        ),
+                      )),
                   sizedBoxHeight(20),
                   buildAuthButton(
                       'Sign up', () => Get.to(const EmailVerificationScreen())),
