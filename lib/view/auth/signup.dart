@@ -61,7 +61,7 @@ class SignupScreen extends StatelessWidget {
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.passwordObscureText.value,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.visiblePassword,
                       style: const TextStyle(color: kGreyColor),
                       decoration: buildInputDecorationII('Password'),
                     );
@@ -70,7 +70,7 @@ class SignupScreen extends StatelessWidget {
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.confirmPasswordObscureText.value,
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.visiblePassword,
                       style: const TextStyle(color: kGreyColor),
                       decoration: buildInputDecorationII('Confirm password'),
                     );

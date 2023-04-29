@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:project_naverda/view/forgottenpassword/enter_new_password.dart';
+import 'package:project_naverda/view/forgottenpassword/rest_your_password.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 import 'package:project_naverda/widget/countdown.dart';
 
@@ -122,7 +122,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                   sizedBoxHeight(20),
                   GestureDetector(
                     onTap: () => levelClock == 0
-                        ? Get.to(const EnterNewPasswordScreen())
+                        ? Get.to(const ResetPasswordScreen())
                         : null,
                     child: Container(
                         alignment: Alignment.center,

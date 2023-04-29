@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_naverda/view/forgottenpassword/reset_done.dart';
 
 import '../../controller/signup_controller.dart';
 import '../../styles/color.dart';
 import '../../widget/basic_widget.dart';
 
-class EnterNewPasswordScreen extends StatelessWidget {
-  const EnterNewPasswordScreen({Key? key}) : super(key: key);
+class ResetPasswordScreen extends StatelessWidget {
+  const ResetPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,28 +34,28 @@ class EnterNewPasswordScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            buildHeader('Forgot Password?'),
-                            sizedBoxHeight(12),
+                            buildHeader('Reset your password'),
                           ],
                         ),
                       ),
                       sizedBoxHeight(30),
                       TextFormField(
-                        keyboardType: TextInputType.emailAddress,
+                        obscureText: controller.passwordObscureText.value,
+                        keyboardType: TextInputType.visiblePassword,
                         style: const TextStyle(color: kGreyColor),
                         decoration: buildInputDecorationII('Password'),
                       ),
                       sizedBoxHeight(20),
-
                       TextFormField(
-                        keyboardType: TextInputType.emailAddress,
+                        obscureText: controller.passwordObscureText.value,
+                        keyboardType: TextInputType.visiblePassword,
                         style: const TextStyle(color: kGreyColor),
                         decoration: buildInputDecorationII('Confirm Password'),
                       ),
                       sizedBoxHeight(40),
                       buildAuthButton(
                         'Reset',
-                        () => null,
+                        () => Get.to(const ResetDoneScreen()),
                       ),
                     ],
                   ),
