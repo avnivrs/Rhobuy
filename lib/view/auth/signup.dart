@@ -46,7 +46,7 @@ class SignupScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  'Avniverse',
+                                  'Avniverse' ,
                                   style: TextStyle(
                                       fontSize: 14.sp, fontWeight: FontWeight.w600,height: 1.6),
                                 ),
