@@ -51,13 +51,13 @@ class SignupScreen extends StatelessWidget {
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Name'),
                   ),
-                  sizedBoxHeight(30),
+                  sizedBoxHeight(20),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Email address'),
                   ),
-                  sizedBoxHeight(30),
+                  sizedBoxHeight(20),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.passwordObscureText.value,
@@ -66,7 +66,7 @@ class SignupScreen extends StatelessWidget {
                       decoration: buildInputDecorationII('Password'),
                     );
                   }),
-                  sizedBoxHeight(30),
+                  sizedBoxHeight(20),
                   Obx(() {
                     return TextFormField(
                       obscureText: controller.confirmPasswordObscureText.value,
@@ -75,9 +75,9 @@ class SignupScreen extends StatelessWidget {
                       decoration: buildInputDecorationII('Confirm password'),
                     );
                   }),
-                  sizedBoxHeight(20),
+                  sizedBoxHeight(10),
                   Container(
-                      width: 280.w,
+                      width: 290.w,
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: RichText(
                         text: TextSpan(
