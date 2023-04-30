@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:project_naverda/view/auth/animated_welcome.dart';
 import 'package:project_naverda/widget/basic_widget.dart';
 
-
 import '../../styles/color.dart';
 import '../../widget/countdown.dart';
 
@@ -55,56 +54,59 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               backButton(),
-              sizedBoxHeight(65),
+              sizedBoxHeight(76),
               buildHeader('Email verification'),
-              sizedBoxHeight(20),
+              sizedBoxHeight(12),
               RichText(
                 textAlign: TextAlign.justify,
                 text: TextSpan(
                   text: 'Please take a moment to verify your email address. '
                       'We sent an email with a verification link to ',
                   style: TextStyle(
-                    fontSize: 15.0.sp,
+                    fontSize: 14.0.sp,
                     color: kGreyColor,
+                    height: 1.6,
                   ),
                   children: [
                     TextSpan(
                       text: email,
                       style: TextStyle(
-                          color: kBlackColor,
-                          overflow: TextOverflow.clip,
-                          fontSize: 14.0.sp,
-                          fontWeight: FontWeight.w600),
+                        color: kBlackColor,
+                        overflow: TextOverflow.clip,
+                        fontSize: 14.0.sp,
+                        height: 1.6,
+                      ),
                     ),
                     TextSpan(
                       text:
                           ' If you didn’t receive the email, check your spam folder or tap the resend button.',
                       style: TextStyle(
-                        fontSize: 15.0.sp,
+                        fontSize: 14.0.sp,
                         color: kGreyColor,
+                        height: 1.6,
                       ),
                     ),
                     TextSpan(
                         text: 'Open mail app',
                         style: TextStyle(
-                            fontSize: 15.0.sp,
+                            fontSize: 14.0.sp,
                             decoration: TextDecoration.underline,
                             decorationThickness: 2.0.sp,
                             decorationStyle: TextDecorationStyle.solid,
                             color: kBlackColor,
-                            fontWeight: FontWeight.w600),
+                            height: 1.6,
+                            fontWeight: FontWeight.w500),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () async {
                             await LaunchApp.openApp(
-                              androidPackageName: 'com.google.android.gm',
-                              appStoreLink: 'id422689480',
-                              openStore: true
-                            );
+                                androidPackageName: 'com.google.android.gm',
+                                appStoreLink: 'id422689480',
+                                openStore: true);
                           }),
                   ],
                 ),
               ),
-              sizedBoxHeight(70),
+              sizedBoxHeight(50),
               Center(
                 child: CountdownTimer(
                   animation: StepTween(
@@ -113,42 +115,27 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen>
                   ).animate(_controller),
                 ),
               ),
-              sizedBoxHeight(40),
-              levelClock == 0
-                  ? InkWell(
-                      onTap: () {},
-                      child: Container(
-                          alignment: Alignment.center,
-                          width: double.infinity,
-                          height: 80.h,
-                          decoration: BoxDecoration(
-                              color: kGreyBgColor,
-                              borderRadius: buildBorderRadius(50)),
-                          child: Text(
-                            'Resend',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600),
-                          )),
-                    )
-                  : InkWell(
-                      onTap: () => Get.to(const AnimatedWelcomeScreen()),
-                      child: Container(
-                          alignment: Alignment.center,
-                          width: double.infinity,
-                          height: 80.h,
-                          decoration: BoxDecoration(
-                              color: kLightGreyBgColor,
-                              borderRadius: buildBorderRadius(50)),
-                          child: Text(
-                            'Resend',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600),
-                          )),
-                    ),
+              sizedBoxHeight(20),
+              InkWell(
+                onTap: () => levelClock == 0
+                    ? Get.to(const AnimatedWelcomeScreen())
+                    : null,
+                child: Container(
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 20.r),
+                    decoration: BoxDecoration(
+                        color:
+                            levelClock == 0 ? kGreyBgColor : kLightGreyBgColor,
+                        borderRadius: buildBorderRadius(50)),
+                    child: Text(
+                      'Resend',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600),
+                    )),
+              ),
             ],
           ),
         ),
