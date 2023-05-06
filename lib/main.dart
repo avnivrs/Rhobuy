@@ -3,10 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
-
-import 'view/forgottenpassword/EmailTimer.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -30,10 +29,11 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            fontFamily: 'Montserrat-SemiBold',
             scaffoldBackgroundColor: kBgColor,
             primarySwatch: Colors.grey,
           ),
+          initialRoute: RoutesController.initialPage,
+          getPages: RoutesController.routes,
           home: const WalkthroughScreen(),
         );
       },

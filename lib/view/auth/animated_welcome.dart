@@ -34,13 +34,12 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
                     " \"I lost my mum's favorite high-quality silver bracelet with a rose gold"
                     " heart charm and cubic zirconia stones, and I need to replace it to make it "
                     "up to her.Can you help get exactly this?\", and I'll search multiple sources to find the best matches. ",
-                    textAlign: TextAlign.justify,
                     textStyle: TextStyle(
                       letterSpacing: 1.2.sp,
-                      height: 1.5.sp,
+                      height: 1.6.sp,
                       fontSize: 14.0.sp,
                       color: kGreyColor,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                     speed: const Duration(milliseconds: 100),
                   ),

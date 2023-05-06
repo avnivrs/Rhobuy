@@ -66,9 +66,8 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                     children: [
                       sizedBoxHeight(76),
                       buildHeader('Email sent!'),
-                      sizedBoxHeight(20),
+                      sizedBoxHeight(12),
                       RichText(
-                        textAlign: TextAlign.justify,
                         text: TextSpan(
                           text: 'We sent an email with a reset link to ',
                           style: TextStyle(
@@ -88,7 +87,7 @@ class _EmailTimeDownState extends State<EmailTimeDown>
                             ),
                             TextSpan(
                               text:
-                                  ' If you didn’t receive the email, check your spam folder or tap the resend button.',
+                                  ' If you didn’t receive the email, check your spam folder or tap the resend button. ',
                               style: TextStyle(
                                 fontSize: 14.0.sp,
                                 color: kGreyColor,

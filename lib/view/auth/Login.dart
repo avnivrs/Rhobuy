@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:project_naverda/controller/login_controller.dart';
+import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/constants.dart';
-import 'package:project_naverda/view/auth/signup.dart';
 
 import '../../styles/color.dart';
 import '../../widget/basic_widget.dart';
@@ -40,7 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         sizedBoxHeight(12),
                         Text(
                           'Please login to Rhobuy using your',
-                          style: TextStyle(fontSize: 15.sp, color: kGreyColor,fontFamily: fontFamily),
+                          style: TextStyle(
+                              fontSize: 15.sp,
+                              color: kGreyColor,
+                              fontFamily: fontFamily),
                         ),
                         sizedBoxHeight(8),
                         Row(
@@ -48,11 +51,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             Text(
                               'Avniverse',
                               style: TextStyle(
-                                  fontSize: 15.sp, fontWeight: FontWeight.w500,fontFamily: fontFamily),
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: fontFamily),
                             ),
-                             Text(
+                            Text(
                               ' account!',
-                              style: TextStyle(fontSize: 15, color: kGreyColor,fontFamily: fontFamily),
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: kGreyColor,
+                                  fontFamily: fontFamily),
                             ),
                           ],
                         ),
@@ -93,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   buildGoogle(() {}),
                   sizedBoxHeight(20),
                   GestureDetector(
-                    onTap: () => Get.to(const SignupScreen()),
+                    onTap: () => Get.toNamed(RoutesController.signUpPage),
                     child: Column(
                       children: [
                         Center(

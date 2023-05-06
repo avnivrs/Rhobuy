@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      sizedBoxHeight(54),
+                      sizedBoxHeight(50),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(color: kGreyColor),
