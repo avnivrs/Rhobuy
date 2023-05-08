@@ -23,3 +23,4 @@ class RoutesController extends GetxController {
     GetPage(name: resetDonePage, page: () => const ResetDoneScreen()),
   ];
 }
+// https://avniverse-accounts.fly.dev/graphql

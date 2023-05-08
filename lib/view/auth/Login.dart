@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:project_naverda/Api_Services/login_api_services.dart';
 import 'package:project_naverda/controller/login_controller.dart';
 import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/constants.dart';
+import 'package:project_naverda/view/mainscreen/homepage.dart';
+import 'package:provider/provider.dart';
 
 import '../../styles/color.dart';
 import '../../widget/basic_widget.dart';
@@ -18,6 +22,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LoginController controller = Get.put(LoginController());
+  final TextEditingController emailController=TextEditingController();
+  final TextEditingController passwordController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   sizedBoxHeight(50),
                   TextFormField(
+                    controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     style: const TextStyle(color: kGreyColor),
                     decoration: buildInputDecoration('Email address'),
@@ -76,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   sizedBoxHeight(20),
                   Obx(() {
                     return TextFormField(
+                      controller: passwordController,
                       obscureText: controller.obscureText.value,
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
@@ -96,7 +104,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       )),
                   sizedBoxHeight(40),
-                  buildAuthButton('Login', () {}),
+                  Consumer<LoginService>(
+                    builder: (context, loginState, child) {
+                      return ElevatedButton(
+                        onPressed: () async {
+                          loginState.email = emailController.text;
+                          loginState.password = passwordController.text;
+                          await loginState.login();
+                         Get.to(HomePageScreen());
+                        },
+                        child: Text('Login'),
+                      );
+                    },
+                  ),
+                   // buildAuthButton('Login', () {
+                   //   LoginService('','',).login();
+                   // }),
                   sizedBoxHeight(20),
                   buildGoogle(() {}),
                   sizedBoxHeight(20),

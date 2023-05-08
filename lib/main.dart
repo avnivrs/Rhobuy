@@ -3,9 +3,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:project_naverda/Api_Services/login_api_services.dart';
+import 'package:project_naverda/models/user_token_model.dart';
 import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/color.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -22,21 +25,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      builder: (BuildContext context, Widget? child) {
-        return GetMaterialApp(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            scaffoldBackgroundColor: kBgColor,
-            primarySwatch: Colors.grey,
-          ),
-          initialRoute: RoutesController.initialPage,
-          getPages: RoutesController.routes,
-          home: const WalkthroughScreen(),
-        );
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginService('', '', UserToken(token: ''))),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (BuildContext context, Widget? child) {
+          return GetMaterialApp(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              scaffoldBackgroundColor: kBgColor,
+              primarySwatch: Colors.grey,
+            ),
+            initialRoute: RoutesController.initialPage,
+            getPages: RoutesController.routes,
+            home: const WalkthroughScreen(),
+          );
+        },
+      ),
     );
   }
 }

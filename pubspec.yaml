@@ -14,18 +14,21 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  bloc:
+#  bloc:
   animated_text_kit: ^4.2.2
   get:
   flutter_screenutil:
   flutter_bloc:
   hive_flutter:
   hive:
+  graphql_flutter: ^5.1.2
   hive_generator:
   icons_launcher: ^2.1.0
   external_app_launcher:
   slide_countdown: ^0.5.0
   iconsax:
+  provider:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
