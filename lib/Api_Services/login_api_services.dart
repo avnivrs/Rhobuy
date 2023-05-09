@@ -4,9 +4,9 @@ import 'package:project_naverda/models/user_token_model.dart';
 import 'package:project_naverda/styles/constants.dart';
 
 class LoginService with ChangeNotifier {
-   String email;
-   String password;
-  late final UserToken _token;
+  String email;
+  String password;
+  UserToken _token;
 
   LoginService(this.email, this.password, this._token);
 
@@ -15,18 +15,17 @@ class LoginService with ChangeNotifier {
       cache: GraphQLCache(),
       link: HttpLink(apiLink),
     );
-
+    print(email);
     final QueryResult result = await client.mutate(MutationOptions(
       document: gql('''
                 mutation Login(\$email: String!, \$password: String!) {
             login(email: \$email, password: \$password) {
-              
+              token
             }
           }
-
       '''),
       variables: {
-        'username': email,
+        'email': email,
         'password': password,
       },
       onCompleted: (dynamic resultData) {
