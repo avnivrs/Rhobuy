@@ -1,12 +1,15 @@
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:project_naverda/models/user_token_model.dart';
+import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/constants.dart';
 
 class LoginService with ChangeNotifier {
   String email;
   String password;
   UserToken _token;
+  bool isLoading = false;
 
   LoginService(this.email, this.password, this._token);
 
@@ -16,6 +19,8 @@ class LoginService with ChangeNotifier {
       link: HttpLink(apiLink),
     );
     print(email);
+    isLoading = true;
+    notifyListeners();
     final QueryResult result = await client.mutate(MutationOptions(
       document: gql('''
                 mutation Login(\$email: String!, \$password: String!) {
@@ -29,9 +34,11 @@ class LoginService with ChangeNotifier {
         'password': password,
       },
       onCompleted: (dynamic resultData) {
-        print(resultData);
+        Get.toNamed(AppRoute.homePage);
       },
     ));
+    isLoading = false;
+    notifyListeners();
 
     if (result.hasException) {
       throw result;

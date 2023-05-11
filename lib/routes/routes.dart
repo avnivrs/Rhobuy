@@ -4,6 +4,7 @@ import 'package:project_naverda/view/auth/emailverify.dart';
 import 'package:project_naverda/view/auth/signup.dart';
 import 'package:project_naverda/view/forgottenpassword/reset_done.dart';
 import 'package:project_naverda/view/forgottenpassword/rest_your_password.dart';
+import 'package:project_naverda/view/mainscreen/homepage.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
 
 class AppRoute extends GetxController {
@@ -13,6 +14,7 @@ class AppRoute extends GetxController {
   static const String emailVerifyPage = '/emailVerify';
   static const String resetPasswordPage = '/resetPassword';
   static const String resetDonePage = '/restDone';
+  static const String homePage = '/homepage';
 
   static final routes = [
     GetPage(name: initialPage, page: () => const WalkthroughScreen()),
@@ -21,6 +23,7 @@ class AppRoute extends GetxController {
     GetPage(name: emailVerifyPage, page: () => const EmailVerificationScreen()),
     GetPage(name: resetPasswordPage, page: () => const ResetPasswordScreen()),
     GetPage(name: resetDonePage, page: () => const ResetDoneScreen()),
+    GetPage(name: homePage, page: () => const HomePageScreen()),
   ];
 }
 // https://avniverse-accounts.fly.dev/graphql
