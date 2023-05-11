@@ -6,7 +6,7 @@ import 'package:project_naverda/view/forgottenpassword/reset_done.dart';
 import 'package:project_naverda/view/forgottenpassword/rest_your_password.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
 
-class RoutesController extends GetxController {
+class AppRoute extends GetxController {
   static const String initialPage = '/';
   static const String loginPage = '/login';
   static const String signUpPage = '/signup';

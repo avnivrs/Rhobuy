@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:project_naverda/Api_Services/login_api_services.dart';
+import 'package:project_naverda/Api_Services/register_api_services.dart';
 import 'package:project_naverda/models/user_token_model.dart';
 import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/color.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LoginService('', '', UserToken(token: ''))),
+        ChangeNotifierProvider(create: (_) => SignUpState('','','', UserToken(token: ''))),
       ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
@@ -39,8 +41,8 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: kBgColor,
               primarySwatch: Colors.grey,
             ),
-            initialRoute: RoutesController.initialPage,
-            getPages: RoutesController.routes,
+            initialRoute: AppRoute.initialPage,
+            getPages: AppRoute.routes,
             home: const WalkthroughScreen(),
           );
         },

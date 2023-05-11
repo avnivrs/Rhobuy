@@ -1,49 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:project_naverda/models/user_token_model.dart';
+import 'package:project_naverda/styles/constants.dart';
 
 class SignUpState extends ChangeNotifier {
   String name = '';
   String email = '';
   String password = '';
+  UserToken _token;
   bool isLoading = false;
 
-  void setName(String name) {
-    this.name = name;
-    notifyListeners();
-  }
+  SignUpState(this.name, this.email, this.password, this._token);
 
-  void setEmail(String email) {
-    this.email = email;
-    notifyListeners();
-  }
-
-  void setPassword(String password) {
-    this.password = password;
-    notifyListeners();
-  }
-
-  Future<bool> signUp(GraphQLClient client) async {
+  Future<bool> signUp() async {
+    final GraphQLClient client = GraphQLClient(
+      cache: GraphQLCache(),
+      link: HttpLink(apiLink),
+    );
     isLoading = true;
     notifyListeners();
-
     try {
       final result = await client.mutate(
         MutationOptions(
           document: gql('''
-            mutation SignUp(\$name: String!, \$email: String!, \$password: String!) {
+            mutation Register(\$name: String!, \$email: String!, \$password: String!) {
               register(name: \$name, email: \$email, password: \$password) {
                 token
               }
             }
           '''),
           variables: {'name': name, 'email': email, 'password': password},
+          onCompleted: (dynamic resultData) {
+            print(resultData);
+            // Get.toNamed(AppRoute.emailVerifyPage);
+          },
         ),
       );
 
       final token = result.data!['signUp']['token'];
-
-      // save token to storage
-      // ...
+      print(token);
 
       isLoading = false;
       notifyListeners();
