@@ -48,7 +48,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       ),
                       sizedBoxHeight(30),
                       buildAuthButton(
-                          'Proceed', () => Get.to(const EmailTimeDown())),
+                          'Proceed', () => Get.to(const EmailTimeDown()),false),
                       sizedBoxHeight(20),
                       Center(
                         child: TextButton(

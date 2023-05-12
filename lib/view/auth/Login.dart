@@ -81,6 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                       style: const TextStyle(color: kGreyColor),
                       decoration: buildInputDecoration('Email address'),
+                      validator: (text) {
+                        if (text!.isEmpty) {
+                          return 'enter email';
+                        }
+                        return null;
+                      },
                     ),
                     sizedBoxHeight(20),
                     Obx(() {
@@ -90,6 +96,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboardType: TextInputType.emailAddress,
                         style: const TextStyle(color: kGreyColor),
                         decoration: buildInputDecorationLogin('Password'),
+                        validator: (text) {
+                          if (text!.isEmpty) {
+                            return 'enter password';
+                          }
+                          return null;
+                        },
                       );
                     }),
                     sizedBoxHeight(10),
@@ -107,13 +119,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         )),
                     sizedBoxHeight(40),
                     Consumer<LoginService>(
-                      builder: (context, loginState, child) =>
-                          buildAuthButton('Login', () async {
-                        loginState.email = emailController.text;
-                        loginState.password = passwordController.text;
-                        await loginState.login();
-                        Get.to(const HomePageScreen());
-                      }),
+                      builder: (context, loginState, child) => buildAuthButton(
+                        'Login',
+                        () async {
+                          if (_formKey.currentState!.validate()) {
+                            loginState.email = emailController.text;
+                            loginState.password = passwordController.text;
+                            await loginState.login();
+                            Get.to(const HomePageScreen());
+                          }
+                        }, loginState.isLoading,
+                      ),
                     ),
 
                     sizedBoxHeight(20),

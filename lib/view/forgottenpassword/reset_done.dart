@@ -29,7 +29,7 @@ class ResetDoneScreen extends StatelessWidget {
                             'Click “Return to login” to get back into your account. Let’s get shopping again!'),
                         sizedBoxHeight(50),
                         buildAuthButton('Return to login',
-                            () => Get.offAll(const LoginScreen()))
+                            () => Get.offAll(const LoginScreen()),false)
                       ],
                     ),
                   ),

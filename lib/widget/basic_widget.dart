@@ -184,7 +184,7 @@ buildHeaderDes(String des) {
   );
 }
 
-buildAuthButton(String buttonText, VoidCallback press) {
+buildAuthButton(String buttonText, VoidCallback press, bool isLoading) {
   return InkWell(
     onTap: press,
     child: Container(
@@ -196,15 +196,16 @@ buildAuthButton(String buttonText, VoidCallback press) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SizedBox(
-            //     width: 15,
-            //     height: 15,
-            //     child: CircularProgressIndicator(
-            //       valueColor: const AlwaysStoppedAnimation(),
-            //       strokeWidth: 4.0,
-            //       color: kBlackColor.withOpacity(0.8),
-            //       backgroundColor: Colors.white,
-            //     )),
+            isLoading?
+            SizedBox(
+                width: 15,
+                height: 15,
+                child: CircularProgressIndicator(
+                  valueColor: const AlwaysStoppedAnimation(Colors.grey),
+                  strokeWidth: 4.0,
+                  color: kBlackColor.withOpacity(0.8),
+                  backgroundColor: Colors.white,
+                )):Container(),
             sizedBoxWidth(10),
             Text(
               buttonText,

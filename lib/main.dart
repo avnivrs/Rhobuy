@@ -8,6 +8,7 @@ import 'package:project_naverda/Api_Services/register_api_services.dart';
 import 'package:project_naverda/models/user_token_model.dart';
 import 'package:project_naverda/routes/routes.dart';
 import 'package:project_naverda/styles/color.dart';
+import 'package:project_naverda/view/auth/Login.dart';
 import 'package:project_naverda/view/onboarding/walkthrough.dart';
 import 'package:provider/provider.dart';
 
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
             ),
             initialRoute: AppRoute.initialPage,
             getPages: AppRoute.routes,
-            home: const WalkthroughScreen(),
+            home: const LoginScreen(),
           );
         },
       ),

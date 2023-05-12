@@ -14,9 +14,10 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-#  bloc:
   animated_text_kit: ^4.2.2
   get:
+  awesome_snackbar_content: ^0.1.3
+  string_validator: ^1.0.0
   flutter_screenutil:
   flutter_bloc:
   hive_flutter:

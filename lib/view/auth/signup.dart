@@ -78,7 +78,9 @@ class SignupScreen extends StatelessWidget {
                           decoration: buildInputDecoration('Name'),
                           validator: (text) {
                             if (text!.isEmpty) {
-                              return 'enter name';
+                              return 'Enter name';
+                            } else if (text!.length < 3) {
+                              return 'Name entered is less than 3';
                             }
                           },
                         ),
@@ -89,8 +91,11 @@ class SignupScreen extends StatelessWidget {
                           style: const TextStyle(color: kGreyColor),
                           validator: (text) {
                             if (text!.isEmpty) {
-                              return 'email';
+                              return 'Enter an email';
+                            } else if (text!.isEmail == false) {
+                              return 'Enter a valid email';
                             }
+                            return null;
                           },
                           decoration: buildInputDecoration('Email address'),
                         ),
@@ -103,13 +108,16 @@ class SignupScreen extends StatelessWidget {
                             style: const TextStyle(color: kGreyColor),
                             decoration: buildInputDecorationII('Password'),
                             validator: (text) {
-                              if (text!.length <=4) {
-                                return 'password isnt strong enough';
+                              if (text!.length <= 8) {
+                                return 'password isn\'t strong enough';
+                              } else if (text!.contains(RegExp(r'[A-Z]'))) {
+                                return 'Password should contain at least one uppercase letter';
                               }
+                              return null;
                             },
                           );
                         }),
-                      // okoriec01@gmail.com
+                        // okoriec01@gmail.com
                         sizedBoxHeight(20),
                         Obx(() {
                           return TextFormField(
@@ -177,9 +185,8 @@ class SignupScreen extends StatelessWidget {
                               signUpState.email = emailController.text;
                               signUpState.password = passwordController.text;
                               await signUpState.signUp();
-
                             }
-                          }),
+                          }, signUpState.isLoading),
                         ),
                         sizedBoxHeight(20),
                         buildGoogle(() {}),

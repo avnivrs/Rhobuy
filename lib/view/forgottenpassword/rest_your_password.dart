@@ -55,7 +55,10 @@ class ResetPasswordScreen extends StatelessWidget {
                       sizedBoxHeight(40),
                       buildAuthButton(
                         'Reset',
-                        () => Get.to(const ResetDoneScreen()),
+                        () => Get.to(
+                          const ResetDoneScreen(),
+                        ),
+                        false,
                       ),
                     ],
                   ),
